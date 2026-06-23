@@ -2,6 +2,7 @@
 if (!isset($base_url)) {
     $base_url = './';
 }
+$is_home = isset($is_homepage) && $is_homepage;
 ?>
 <!DOCTYPE html>
 <html lang="id" style="scroll-behavior: smooth;">
@@ -13,28 +14,29 @@ if (!isset($base_url)) {
 </head>
 <body>
 
-    <nav class="header-nav">
+    <nav class="header-nav <?php echo $is_home ? 'transparent-header' : 'solid-header'; ?>" id="headerNav">
         <div class="nav-container">
             <div class="logo" style="cursor: pointer; display: flex; align-items: center; gap: 8px;" onclick="window.location.href='<?php echo $base_url; ?>index.php';">
                 <img src="<?php echo $base_url; ?>assets/images/logo.png" alt="Karimunjawavibestrip Logo" class="logo-img">
-                <span>Karimunjawavibestrip</span>
+                <span class="logo-text">Karimunjawavibestrip</span>
             </div>
+            
             <ul class="nav-menu">
                 <li class="nav-item"><a href="<?php echo $base_url; ?>index.php">Home</a></li>
                 
                 <li class="nav-item dropdown">
-                    <a href="<?php echo $base_url; ?>index.php#paket" class="dropdown-toggle">Paket Wisata ▾</a>
+                    <a href="<?php echo $base_url; ?>index.php#penginapan" class="dropdown-toggle">Penginapan ▾</a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?php echo $base_url; ?>index.php#paket">Semua Paket</a></li>
+                        <li><a href="<?php echo $base_url; ?>index.php#penginapan">Semua Penginapan</a></li>
                         
                         <?php 
                         // Deklarasi global agar Intelephense VS Code tidak memunculkan garis merah
-                        global $paket_wisata; 
+                        global $daftar_penginapan; 
                         
-                        if (isset($paket_wisata) && is_array($paket_wisata)): 
-                            foreach ($paket_wisata as $paket): 
+                        if (isset($daftar_penginapan) && is_array($daftar_penginapan)): 
+                            foreach ($daftar_penginapan as $penginapan): 
                         ?>
-                            <li><a href="<?php echo $base_url; ?>detail-page/detail.php?id=<?php echo $paket['id']; ?>"><?php echo $paket['nama']; ?></a></li>
+                            <li><a href="<?php echo $base_url; ?>detail-page/<?php echo $penginapan['id']; ?>.php"><?php echo $penginapan['nama']; ?></a></li>
                         <?php 
                             endforeach; 
                         endif; 
@@ -46,3 +48,20 @@ if (!isset($base_url)) {
             </ul>
         </div>
     </nav>
+
+    <?php if ($is_home): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('headerNav');
+            function checkScroll() {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            }
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Check once in case page loads scrolled down
+        });
+    </script>
+    <?php endif; ?>

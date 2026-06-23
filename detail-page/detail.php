@@ -3,166 +3,263 @@ $base_url = '../';
 // Hubungkan komponen data konfigurasi
 require_once $base_url . 'config.php';
 
-// Validasi parameter ID paket
-$package_id = isset($_GET['id']) ? trim(htmlspecialchars($_GET['id'])) : '';
-$paket = null;
+// Validasi parameter ID penginapan
+$penginapan_id = isset($_GET['id']) ? trim(htmlspecialchars($_GET['id'])) : '';
+$penginapan = null;
 
-if (!empty($package_id)) {
-    foreach ($paket_wisata as $p) {
-        if ($p['id'] === $package_id) {
-            $paket = $p;
+if (!empty($penginapan_id)) {
+    foreach ($daftar_penginapan as $p) {
+        if ($p['id'] === $penginapan_id) {
+            $penginapan = $p;
             break;
         }
     }
 }
 
 // Judul halaman dinamis untuk SEO
-$page_title = $paket ? $paket['nama'] . " - Karimunjawa Tour" : "Paket Tidak Ditemukan - Karimunjawa Tour";
+$page_title = $penginapan ? $penginapan['nama'] . " - Penginapan Karimunjawa" : "Penginapan Tidak Ditemukan - Karimunjawa Tour";
 
 // Muat komponen header visual
 include_once $base_url . 'header.php';
 ?>
 
 <div class="btn-back-container">
-    <a href="<?php echo $base_url; ?>index.php#paket" class="btn-back">
+    <a href="<?php echo $base_url; ?>index.php#penginapan" class="btn-back">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
-        Kembali ke Semua Paket
+        Kembali ke Semua Penginapan
     </a>
 </div>
 
-<?php if ($paket): ?>
-    <!-- Subpage Hero Banner -->
-    <header class="detail-hero" style="background-image: url('<?php echo $base_url . $paket['gambar']; ?>');">
-        <div class="detail-hero-content">
-            <?php if (!empty($paket['badge'])): ?>
-                <div class="promotional-badge <?php echo $paket['badge_class']; ?>" style="position: static; display: inline-block; margin-bottom: 12px; transform: none;">
-                    <?php echo $paket['badge']; ?>
-                </div>
-            <?php endif; ?>
-            <h1><?php echo $paket['nama']; ?></h1>
-            <div class="detail-meta-badges">
-                <span class="meta-badge">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    <?php echo $paket['durasi']; ?>
-                </span>
-                <span class="meta-badge">
-                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></svg>
-                    Layanan Terbaik
-                </span>
+<?php if ($penginapan): ?>
+    <!-- Main Container -->
+    <main class="container" style="padding-top: 20px; max-width: 1200px; margin: 0 auto;">
+        
+        <!-- 5-Photo Grid Gallery (Spans full width at the top) -->
+        <div class="lodging-detail-gallery">
+            <!-- 1. Left Top Image -->
+            <div class="lodging-detail-gallery-item" onclick="bukaModalLightbox('<?php echo $base_url . $penginapan['foto_galeri'][1]; ?>', '<?php echo $penginapan['nama']; ?>')">
+                <img src="<?php echo $base_url . $penginapan['foto_galeri'][1]; ?>" alt="<?php echo $penginapan['nama']; ?>">
+            </div>
+            
+            <!-- 2. Middle Large Image (spans two rows) -->
+            <div class="lodging-detail-gallery-item big-image" onclick="bukaModalLightbox('<?php echo $base_url . $penginapan['foto_galeri'][0]; ?>', '<?php echo $penginapan['nama']; ?>')">
+                <img src="<?php echo $base_url . $penginapan['foto_galeri'][0]; ?>" alt="<?php echo $penginapan['nama']; ?>">
+            </div>
+            
+            <!-- 3. Right Top Image -->
+            <div class="lodging-detail-gallery-item" onclick="bukaModalLightbox('<?php echo $base_url . $penginapan['foto_galeri'][2]; ?>', '<?php echo $penginapan['nama']; ?>')">
+                <img src="<?php echo $base_url . $penginapan['foto_galeri'][2]; ?>" alt="<?php echo $penginapan['nama']; ?>">
+            </div>
+            
+            <!-- 4. Left Bottom Image -->
+            <div class="lodging-detail-gallery-item" onclick="bukaModalLightbox('<?php echo $base_url . $penginapan['foto_galeri'][3]; ?>', '<?php echo $penginapan['nama']; ?>')">
+                <img src="<?php echo $base_url . $penginapan['foto_galeri'][3]; ?>" alt="<?php echo $penginapan['nama']; ?>">
+            </div>
+            
+            <!-- 5. Right Bottom Image -->
+            <div class="lodging-detail-gallery-item" onclick="bukaModalLightbox('<?php echo $base_url . $penginapan['foto_galeri'][4]; ?>', '<?php echo $penginapan['nama']; ?>')">
+                <img src="<?php echo $base_url . $penginapan['foto_galeri'][4]; ?>" alt="<?php echo $penginapan['nama']; ?>">
             </div>
         </div>
-    </header>
 
-    <!-- Main Container -->
-    <main class="container" style="padding-top: 30px;">
+        <!-- 2-Column Split Layout -->
         <div class="detail-grid">
             
             <!-- Left Column: Content -->
             <div class="detail-main">
                 
-                <!-- Deskripsi Paket -->
-                <section class="detail-section-card">
-                    <h2>Tentang Paket</h2>
-                    <p class="detail-desc-text"><?php echo $paket['detail_deskripsi']; ?></p>
-                </section>
-
-                <!-- Fasilitas Termasuk / Tidak Termasuk -->
-                <section class="detail-section-card">
-                    <h2>Fasilitas Detail</h2>
-                    <div class="facilities-grid">
-                        
-                        <!-- Inclusions (Termasuk) -->
-                        <div class="facility-list-box inclusions">
-                            <h3>
-                                <span style="background-color: rgba(28, 187, 180, 0.1); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">✓</span>
-                                Termasuk (Inclusions)
-                            </h3>
-                            <ul class="custom-list list-inclusions">
-                                <?php foreach ($paket['fasilitas'] as $fasilitas): ?>
-                                    <li><?php echo $fasilitas; ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                        
-                        <!-- Exclusions (Tidak Termasuk) -->
-                        <div class="facility-list-box exclusions">
-                            <h3>
-                                <span style="background-color: rgba(224, 79, 103, 0.1); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">✗</span>
-                                Tidak Termasuk (Exclusions)
-                            </h3>
-                            <ul class="custom-list list-exclusions">
-                                <?php foreach ($paket['tidak_termasuk'] as $tidak): ?>
-                                    <li><?php echo $tidak; ?></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                        
+                <!-- Main Header Details -->
+                <div style="margin-bottom: 20px;">
+                    <div style="font-size: 12px; font-weight: 700; color: var(--primary-teal); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">
+                        <?php echo !empty($penginapan['badge']) ? $penginapan['badge'] : 'Akomodasi Pilihan'; ?> &bull; Karimunjawa
                     </div>
-                </section>
+                    <h1 style="font-size: 32px; font-weight: 700; color: var(--dark-gray); margin-bottom: 12px;"><?php echo $penginapan['nama']; ?></h1>
+                    <p style="font-size: 15px; color: var(--medium-gray); line-height: 24px; margin-bottom: 0;"><?php echo $penginapan['deskripsi']; ?></p>
+                </div>
 
-                <!-- Rencana Perjalanan (Itinerary) -->
-                <section class="detail-section-card">
-                    <h2>Rencana Perjalanan</h2>
-                    <div class="itinerary-timeline">
-                        <?php foreach ($paket['itinerary'] as $index => $hari): ?>
-                            <div class="timeline-item">
-                                <div class="timeline-node"></div>
-                                <div class="timeline-content">
-                                    <div class="timeline-day"><?php echo $hari['hari']; ?></div>
-                                    <h4 class="timeline-title"><?php echo $hari['judul']; ?></h4>
-                                    <p class="timeline-desc"><?php echo $hari['kegiatan']; ?></p>
-                                </div>
+                <!-- Horizontal Line of Meta Boxes with Icons -->
+                <div class="lodging-meta-row">
+                    <!-- Lokasi -->
+                    <div class="lodging-meta-box">
+                        <div class="lodging-meta-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div class="lodging-meta-text">
+                            <span class="lodging-meta-label">Lokasi</span>
+                            <span class="lodging-meta-value"><?php echo str_replace(', Karimunjawa', '', $penginapan['lokasi']); ?></span>
+                        </div>
+                    </div>
+                    <!-- Kapasitas -->
+                    <div class="lodging-meta-box">
+                        <div class="lodging-meta-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <div class="lodging-meta-text">
+                            <span class="lodging-meta-label">Kapasitas</span>
+                            <span class="lodging-meta-value">2-3 Tamu / Kamar</span>
+                        </div>
+                    </div>
+                    <!-- Tipe Stay -->
+                    <div class="lodging-meta-box">
+                        <div class="lodging-meta-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        </div>
+                        <div class="lodging-meta-text">
+                            <span class="lodging-meta-label">Tipe Stay</span>
+                            <span class="lodging-meta-value">Kamar Privat</span>
+                        </div>
+                    </div>
+                    <!-- Konfirmasi -->
+                    <div class="lodging-meta-box">
+                        <div class="lodging-meta-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                        </div>
+                        <div class="lodging-meta-text">
+                            <span class="lodging-meta-label">Status</span>
+                            <span class="lodging-meta-value">Konfirmasi Instan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tentang Penginapan (Detailed Description) -->
+                <div>
+                    <h2 style="font-size: 20px; font-weight: 700; color: var(--dark-gray); border-left: 4px solid var(--primary-teal); padding-left: 12px; margin-bottom: 16px; text-align: left;">Tentang Penginapan</h2>
+                    <p class="detail-desc-text" style="font-size: 15px; color: var(--charcoal); line-height: 25px;"><?php echo $penginapan['detail_deskripsi']; ?></p>
+                </div>
+
+                <!-- Fasilitas & Aturan Card (Styled like "What's Included") -->
+                <div class="lodging-features-card">
+                    <div class="lodging-features-title">Fasilitas & Kebijakan Stay</div>
+                    
+                    <div class="lodging-features-grid">
+                        <!-- Fasilitas Kamar & Layanan -->
+                        <div>
+                            <div style="font-size: 14px; font-weight: 700; color: var(--primary-teal); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                                <span style="background-color: rgba(28, 187, 180, 0.1); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px;">✓</span>
+                                Fasilitas & Layanan
                             </div>
-                        <?php endforeach; ?>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <?php foreach ($penginapan['fasilitas'] as $fasilitas): ?>
+                                    <div class="lodging-feature-item">
+                                        <span class="lodging-feature-bullet">&#10003;</span>
+                                        <span><?php echo $fasilitas; ?></span>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        
+                        <!-- Kebijakan & Aturan Stay -->
+                        <div>
+                            <div style="font-size: 14px; font-weight: 700; color: var(--coral-red); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                                <span style="background-color: rgba(224, 79, 103, 0.1); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--coral-red);">!</span>
+                                Kebijakan & Aturan
+                            </div>
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                <?php foreach ($penginapan['aturan'] as $aturan): ?>
+                                    <div class="lodging-feature-item">
+                                        <span class="lodging-feature-bullet" style="color: var(--coral-red); font-size: 13px;">&#9888;</span>
+                                        <span><?php echo $aturan; ?></span>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
                     </div>
-                </section>
+                </div>
 
             </div>
 
             <!-- Right Column: Sidebar / Booking -->
             <aside class="detail-sidebar">
-                <div class="sticky-booking-card">
-                    <div class="booking-card-price-box">
-                        <div class="booking-card-price-label">Biaya Paket</div>
-                        <div class="booking-card-price"><?php echo $paket['harga']; ?></div>
+                <div class="sticky-booking-card" style="box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); border-radius: 12px; border: 1px solid #ECECEC;">
+                    
+                    <!-- Top Promo Badge -->
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 11px; font-weight: 700; color: #FFF; background-color: var(--dark-gray); padding: 4px 10px; border-radius: 4px; letter-spacing: 0.5px;">TOP SELLER</span>
+                        <div style="display: flex; align-items: center; gap: 4px;">
+                            <span style="color: var(--warm-gold); font-size: 14px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                            <span style="font-size: 12px; color: var(--light-gray); font-weight: 500;">(4.9)</span>
+                        </div>
                     </div>
                     
-                    <div class="booking-card-details">
-                        <div class="booking-card-detail-item">
-                            <span class="booking-card-detail-label">Durasi</span>
-                            <span class="booking-card-detail-val"><?php echo $paket['durasi']; ?></span>
+                    <!-- Price Box -->
+                    <div style="margin-top: 5px;">
+                        <?php 
+                        $harga_text = $penginapan['harga']; 
+                        $is_mulai = false;
+                        if (stripos($harga_text, 'Mulai') !== false) {
+                            $is_mulai = true;
+                            $harga_text = trim(str_ireplace('Mulai', '', $harga_text));
+                        }
+                        $parts = explode('/', $harga_text);
+                        $price_val = trim($parts[0]);
+                        $price_val = str_ireplace('Rp.', 'Rp', $price_val);
+                        $price_val = str_ireplace('Rp', 'Rp ', $price_val);
+                        $price_val = preg_replace('/\s+/', ' ', $price_val);
+                        $price_unit = isset($parts[1]) ? trim($parts[1]) : 'pax';
+                        ?>
+                        <div style="font-size: 11px; color: var(--light-gray); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
+                            <?php echo $is_mulai ? 'Harga Mulai Dari' : 'Harga Paket'; ?>
                         </div>
+                        <div style="display: flex; align-items: baseline; gap: 4px; flex-wrap: wrap;">
+                            <span style="font-size: 22px; font-weight: 700; color: var(--primary-teal); line-height: 1.2; letter-spacing: -0.5px;"><?php echo $price_val; ?></span>
+                            <span style="font-size: 13px; color: var(--medium-gray); font-weight: 500;">/ <?php echo $price_unit; ?></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Detail Fields -->
+                    <div class="booking-card-details" style="margin-top: 14px;">
                         <div class="booking-card-detail-item">
                             <span class="booking-card-detail-label">Lokasi</span>
-                            <span class="booking-card-detail-val">Karimunjawa</span>
+                            <span class="booking-card-detail-val" style="font-size: 13px;"><?php echo str_replace(', Karimunjawa', '', $penginapan['lokasi']); ?></span>
                         </div>
                         <div class="booking-card-detail-item">
-                            <span class="booking-card-detail-label">Metode Booking</span>
-                            <span class="booking-card-detail-val">Deposit / DP</span>
+                            <span class="booking-card-detail-label">Minimal Sewa</span>
+                            <span class="booking-card-detail-val">1 Malam</span>
+                        </div>
+                    </div>
+
+                    <!-- Key Amenities Row -->
+                    <div class="booking-card-amenities">
+                        <!-- Amenity 1 -->
+                        <div class="booking-amenity-item">
+                            <div class="booking-amenity-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                            </div>
+                            <span class="booking-amenity-label">Free Wi-Fi</span>
+                        </div>
+                        <!-- Amenity 2 -->
+                        <div class="booking-amenity-item">
+                            <div class="booking-amenity-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line><line x1="15" y1="9" x2="9" y2="15"></line></svg>
+                            </div>
+                            <span class="booking-amenity-label">Kamar AC</span>
+                        </div>
+                        <!-- Amenity 3 -->
+                        <div class="booking-amenity-item">
+                            <div class="booking-amenity-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </div>
+                            <span class="booking-amenity-label">Breakfast</span>
                         </div>
                     </div>
 
                     <?php
                     // Bikin pesan custom WA terenkripsi yang estetik
-                    $pesan_wa = "Halo Karimunjawa Tour, saya tertarik dengan *" . $paket['nama'] . "* (" . $paket['durasi'] . ").%0A%0AMohon info lebih lanjut mengenai ketersediaan tanggal dan tata cara pemesanan. Terima kasih!";
+                    $pesan_wa = "Halo Karimunjawa Tour, saya ingin menanyakan ketersediaan kamar di *" . $penginapan['nama'] . "*.%0A%0AMohon info ketersediaan slot tanggal stay, cara booking, dan fasilitas lainnya. Terima kasih!";
                     ?>
-                    <a href="https://api.whatsapp.com/send?phone=<?php echo $nomor_whatsapp; ?>&text=<?php echo $pesan_wa; ?>" target="_blank" rel="noopener noreferrer" class="btn-booking-wa">
-                        <!-- Ikon WhatsApp SVG -->
-                        <svg viewBox="0 0 24 24">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.588 1.978 14.12 1.01 11.5 1.017c-5.439 0-9.863 4.372-9.867 9.8-.002 1.73.458 3.41 1.332 4.927l-.975 3.56 3.657-.96zm12.186-6.683c-.266-.134-1.58-.78-1.822-.867-.243-.088-.419-.133-.596.134-.176.265-.685.867-.839 1.045-.156.177-.311.2-.577.067-.266-.134-1.127-.417-2.148-1.329-.794-.709-1.329-1.587-1.485-1.854-.156-.265-.017-.409.117-.541.12-.12.266-.31.399-.464.133-.155.177-.266.266-.443.089-.177.044-.332-.022-.465-.067-.134-.596-1.439-.817-1.97-.215-.519-.432-.447-.597-.456-.153-.008-.33-.009-.507-.009-.177 0-.465.067-.708.333-.243.265-.929.907-.929 2.21 0 1.303.948 2.563 1.08 2.74.133.177 1.865 2.85 4.52 3.996.633.273 1.127.436 1.513.559.636.202 1.213.174 1.67.106.509-.076 1.58-.646 1.801-1.24.22-.593.22-1.102.155-1.21-.067-.107-.243-.173-.509-.307z"/>
-                        </svg>
-                        Hubungi via WhatsApp
+                    <a href="https://api.whatsapp.com/send?phone=<?php echo $nomor_whatsapp; ?>&text=<?php echo $pesan_wa; ?>" target="_blank" rel="noopener noreferrer" class="btn-booking-wa" style="background-color: #0F2D2E; border-radius: 8px; font-family: Tahoma, sans-serif; box-shadow: 0 4px 12px rgba(15, 45, 46, 0.15);">
+                        Pesan Sekarang via WA
                     </a>
 
-                    <div class="quick-help-box">
-                        <div class="quick-help-title">
-                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <div class="quick-help-box" style="background-color: #FAFAFA; border: 1px solid #F0F0F0; border-radius: 8px; padding: 14px; font-size: 12px; color: var(--medium-gray);">
+                        <div class="quick-help-title" style="font-weight: 700; color: var(--dark-gray); font-size: 13px;">
+                            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary-teal);"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
                             Butuh Bantuan?
                         </div>
-                        Silakan hubungi kami untuk kustomisasi paket, konsultasi jadwal kapal, penginapan alternatif, atau penawaran khusus rombongan.
+                        Silakan hubungi kami untuk kustomisasi sewa, pemesanan rombongan, atau rekomendasi jadwal penyeberangan kapal.
                     </div>
                 </div>
             </aside>
@@ -174,8 +271,8 @@ include_once $base_url . 'header.php';
     <!-- Error Not Found State -->
     <main class="container" style="text-align: center; padding: 120px 16px;">
         <div style="font-size: 80px; color: var(--coral-red); margin-bottom: 24px;">☹</div>
-        <h1 style="margin-bottom: 16px;">Paket Tidak Ditemukan</h1>
-        <p style="margin-bottom: 32px; font-size: 16px; color: var(--medium-gray);">Maaf, paket wisata yang Anda cari tidak tersedia atau telah dihapus.</p>
+        <h1 style="margin-bottom: 16px;">Penginapan Tidak Ditemukan</h1>
+        <p style="margin-bottom: 32px; font-size: 16px; color: var(--medium-gray);">Maaf, penginapan yang Anda cari tidak tersedia atau telah dihapus.</p>
         <a href="<?php echo $base_url; ?>index.php" class="btn-primary-large">Kembali ke Beranda</a>
     </main>
 <?php endif; ?>

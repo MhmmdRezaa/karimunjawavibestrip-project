@@ -3,6 +3,23 @@ $base_url = './';
 // Hubungkan komponen data konfigurasi
 require_once $base_url . 'config.php';
 
+// Map rating untuk masing-masing penginapan
+$ratings_map = [
+    'homestay-fan' => 4.5,
+    'homestay-ac' => 4.6,
+    'puri-karimun' => 4.7,
+    'blue-laguna' => 4.8,
+    'summer-inn' => 4.8,
+    'dseason' => 4.9,
+    'almare' => 4.8,
+    'omah-alchy' => 4.9,
+    'hallo-resort' => 4.8,
+    'happinezz-hill' => 4.8,
+    'legon-waru' => 4.9,
+    'royal-ocean' => 5.0,
+    'java-paradise' => 4.9
+];
+
 // Memproses input ulasan baru
 $review_success = false;
 $review_error = "";
@@ -47,49 +64,129 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 }
 
 // Muat komponen header visual
+$is_homepage = true;
 include_once $base_url . 'header.php';
 ?>
 
 <header class="hero" id="home">
-    <div class="hero-content">
-        <h1>Jelajahi Surga Tropis Karimunjawa</h1>
-        <p>Nikmati petualangan laut tak verlupakan dengan layanan tour guide profesional dan terpercaya.</p>
-        <a href="#paket" class="btn-primary-large">Lihat Paket Wisata</a>
+    <div class="hero-inner">
+        <!-- Kolom Kiri: Informasi & Ajakan Aksi -->
+        <div class="hero-left-panel">
+            <span class="hero-tag">Travel Website</span>
+            <h1 class="hero-main-title">NEVER STOP<br>EXPLORING THE<br>WORLD.</h1>
+            <p class="hero-desc">Temukan keindahan pantai pasir putih yang tersembunyi, terumbu karang tropis yang menawan, dan pilihan penginapan mewah berkelas di Kepulauan Karimunjawa.</p>
+            <a href="#penginapan" class="btn-hero-learn-more">LEARN MORE</a>
+        </div>
     </div>
 </header>
 
-<section id="paket" class="container">
-    <h2>Paket Wisata Pilihan</h2>
-    <div class="grid-cards">
-
-        <?php foreach ($paket_wisata as $paket): ?>
-            <div class="package-card">
-                <?php if (!empty($paket['badge'])): ?>
-                    <div class="promotional-badge <?php echo $paket['badge_class']; ?>">
-                        <?php echo $paket['badge']; ?>
-                    </div>
-                <?php endif; ?>
-
-                <div class="card-image-wrapper">
-                    <img src="<?php echo $base_url . $paket['gambar']; ?>" alt="<?php echo $paket['nama']; ?>">
-                    <div class="image-overlay"><?php echo $paket['nama']; ?></div>
-                </div>
-                <div class="card-body">
-                    <p class="card-description"><?php echo $paket['deskripsi']; ?></p>
-                    <div class="price-container">
-                        <div class="price-label">
-                            <?php echo ($paket['harga'] === 'Harga Menyesuaikan') ? 'Hubungi Kami' : 'Mulai dari'; ?>
-                        </div>
-                        <div class="price-amount"><?php echo $paket['harga']; ?></div>
-                    </div>
-                    <a href="<?php echo $base_url; ?>detail-page/detail.php?id=<?php echo $paket['id']; ?>" class="btn-secondary">
-                        <?php echo ($paket['harga'] === 'Harga Menyesuaikan') ? 'Minta Penawaran' : 'Detail Paket'; ?>
-                    </a>
-                </div>
-            </div>
-        <?php endforeach; ?>
-
+<section id="penginapan" class="container">
+    <div class="section-title-wrapper">
+        <h2>Paket Penginapan Karimunjawa</h2>
+        <p class="section-subtitle">Harga Terbaik dan terpercaya</p>
     </div>
+    
+    <div class="grid-cards">
+        <?php foreach ($daftar_penginapan as $index => $penginapan): 
+            $is_hidden = $index >= 8;
+            $card_class = "package-card-link" . ($is_hidden ? " hidden-card" : "");
+            $card_style = $is_hidden ? "display: none;" : "";
+        ?>
+            <a href="<?php echo $base_url; ?>detail-page/<?php echo $penginapan['id']; ?>.php" class="<?php echo $card_class; ?>" style="<?php echo $card_style; ?>">
+                <div class="package-card">
+                    <?php if (!empty($penginapan['badge'])): ?>
+                        <div class="promotional-badge <?php echo $penginapan['badge_class']; ?>">
+                            <?php echo $penginapan['badge']; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="card-image-wrapper">
+                        <img src="<?php echo $base_url . $penginapan['gambar']; ?>" alt="<?php echo $penginapan['nama']; ?>">
+                    </div>
+                    
+                    <div class="card-body">
+                        <?php 
+                        $rating = isset($ratings_map[$penginapan['id']]) ? $ratings_map[$penginapan['id']] : 4.8;
+                        $full_stars = floor($rating);
+                        ?>
+                        <div class="card-rating-wrapper">
+                            <div class="star-rating">
+                                <?php
+                                for ($i = 1; $i <= 5; $i++) {
+                                    if ($i <= $full_stars) {
+                                        echo '<span class="star">&#9733;</span>';
+                                    } else {
+                                        echo '<span class="star empty">&#9733;</span>';
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <span class="rating-value"><?php echo number_format($rating, 1); ?></span>
+                        </div>
+                        
+                        <h3 class="card-title">Paket <?php echo $penginapan['nama']; ?></h3>
+                    </div>
+                    
+                    <?php 
+                    $harga_bersih = str_replace(['Rp.', 'Mulai', 'Rp'], '', $penginapan['harga']);
+                    $harga_bersih = trim(explode('/', $harga_bersih)[0]);
+                    $harga_formatted = 'IDR ' . $harga_bersih;
+                    ?>
+                    <div class="card-footer-price">
+                        <div class="price-info">
+                            <span class="price-start-label">Start From</span>
+                            <span class="price-val"><?php echo $harga_formatted; ?></span>
+                        </div>
+                        <div class="arrow-container">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-arrow">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        <?php endforeach; ?>
+    </div>
+
+    <?php if (count($daftar_penginapan) > 8): ?>
+        <div class="show-more-container" style="text-align: center; margin-top: 32px;">
+            <button id="btnShowMoreLodgings" class="btn-secondary" onclick="toggleLodgings()" data-showing="false" style="min-width: 220px; height: 44px; font-size: 14px; border-radius: 6px;">
+                Lihat Semua Penginapan (<?php echo count($daftar_penginapan); ?>)
+            </button>
+        </div>
+        
+        <script>
+            function toggleLodgings() {
+                const hiddenCards = document.querySelectorAll('.hidden-card');
+                const btn = document.getElementById('btnShowMoreLodgings');
+                const isShowing = btn.getAttribute('data-showing') === 'true';
+                
+                if (isShowing) {
+                    // Collapsing
+                    hiddenCards.forEach(card => {
+                        card.style.display = 'none';
+                    });
+                    btn.innerText = 'Lihat Semua Penginapan (<?php echo count($daftar_penginapan); ?>)';
+                    btn.setAttribute('data-showing', 'false');
+                    // Scroll smoothly back to section header
+                    document.getElementById('penginapan').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    // Expanding
+                    hiddenCards.forEach(card => {
+                        card.style.display = 'flex';
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.4s ease';
+                            card.style.opacity = '1';
+                        }, 20);
+                    });
+                    btn.innerText = 'Sembunyikan Penginapan';
+                    btn.setAttribute('data-showing', 'true');
+                }
+            }
+        </script>
+    <?php endif; ?>
 </section>
 
 <!-- SEKSI GALERI: Menggunakan CSS Grid dengan Aspect Ratio 16:9 (Lanskap Seragam) -->
@@ -282,16 +379,16 @@ include_once $base_url . 'header.php';
                 <input class="text-input" type="text" id="nama" placeholder="Contoh: Budi Santoso" required>
             </div>
             <div class="form-group">
-                <label class="form-label" for="paket_pilihan">Pilih Paket</label>
+                <label class="form-label" for="paket_pilihan">Pilih Penginapan</label>
                 <select class="text-input" id="paket_pilihan" required style="height: 40px; padding: 0 12px;">
-                    <option value="">-- Pilih Paket Wisata --</option>
-                    <?php foreach ($paket_wisata as $paket): ?>
-                        <option value="<?php echo $paket['nama']; ?>"><?php echo $paket['nama']; ?></option>
+                    <option value="">-- Pilih Penginapan --</option>
+                    <?php foreach ($daftar_penginapan as $penginapan): ?>
+                        <option value="<?php echo $penginapan['nama']; ?>"><?php echo $penginapan['nama']; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div class="form-actions">
-                <button type="submit" class="btn-primary-large">Hubungi Tour Guide via WA</button>
+                <button type="submit" class="btn-primary-large">Tanya Ketersediaan Kamar via WA</button>
             </div>
         </form>
     </div>

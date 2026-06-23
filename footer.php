@@ -15,7 +15,7 @@ if (!isset($base_url)) {
         <!-- Brand Info -->
         <div class="footer-column brand-col">
             <div class="footer-logo">Karimunjawa Tour</div>
-            <p class="brand-description">Penyedia jasa tour guide resmi dan profesional di Kepulauan Karimunjawa. Kami menghadirkan petualangan surga tropis terbaik untuk liburan Anda dan keluarga.</p>
+            <p class="brand-description">Penyedia reservasi penginapan, resort, homestay, dan villa resmi di Kepulauan Karimunjawa. Kami menghadirkan kenyamanan menginap terbaik untuk liburan Anda dan keluarga.</p>
             <div class="social-links-wrapper">
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
@@ -37,23 +37,23 @@ if (!isset($base_url)) {
             <h4 class="footer-title">Jelajahi</h4>
             <ul class="footer-links">
                 <li><a href="<?php echo $base_url; ?>index.php#home">Home</a></li>
-                <li><a href="<?php echo $base_url; ?>index.php#paket">Paket Wisata</a></li>
+                <li><a href="<?php echo $base_url; ?>index.php#penginapan">Pilihan Penginapan</a></li>
                 <li><a href="<?php echo $base_url; ?>galeri.php">Galeri Foto</a></li>
-                <li><a href="<?php echo $base_url; ?>index.php#testimoni">Ulasan Wisatawan</a></li>
+                <li><a href="<?php echo $base_url; ?>index.php#testimoni">Ulasan Pengunjung</a></li>
                 <li><a href="<?php echo $base_url; ?>index.php#kontak">Hubungi Kami</a></li>
             </ul>
         </div>
         
         <!-- Popular Packages -->
         <div class="footer-column">
-            <h4 class="footer-title">Paket Terpopuler</h4>
+            <h4 class="footer-title">Penginapan Populer</h4>
             <ul class="footer-links">
                 <?php 
-                global $paket_wisata;
-                if (isset($paket_wisata) && is_array($paket_wisata)): 
-                    foreach (array_slice($paket_wisata, 0, 3) as $paket): 
+                global $daftar_penginapan;
+                if (isset($daftar_penginapan) && is_array($daftar_penginapan)): 
+                    foreach (array_slice($daftar_penginapan, 0, 3) as $penginapan): 
                 ?>
-                    <li><a href="<?php echo $base_url; ?>detail-page/detail.php?id=<?php echo $paket['id']; ?>"><?php echo $paket['nama']; ?></a></li>
+                    <li><a href="<?php echo $base_url; ?>detail-page/<?php echo $penginapan['id']; ?>.php"><?php echo $penginapan['nama']; ?></a></li>
                 <?php 
                     endforeach; 
                 endif; 
@@ -84,7 +84,7 @@ if (!isset($base_url)) {
     <!-- Bottom Bar -->
     <div class="footer-bottom">
         <div class="container footer-bottom-inner">
-            <p>&copy; <?php echo date('Y'); ?> Biro Wisata Karimunjawa. Seluruh Hak Cipta Dilindungi.</p>
+            <p>&copy; <?php echo date('Y'); ?> Karimunjawa Homestay & Resort. Seluruh Hak Cipta Dilindungi.</p>
             <p>Designed & Developed with ♥ by Karimunjawa Tour Team</p>
         </div>
     </div>

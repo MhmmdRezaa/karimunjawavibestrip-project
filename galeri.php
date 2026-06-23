@@ -4,7 +4,7 @@ $base_url = './';
 require_once $base_url . 'config.php';
 
 // Judul halaman dinamis untuk SEO
-$page_title = "Galeri Dokumentasi Karimunjawa - Karimunjawa Tour";
+$page_title = "Galeri Penginapan Karimunjawa - Karimunjawa Tour";
 
 // Muat komponen header visual
 include_once $base_url . 'header.php';
@@ -22,9 +22,9 @@ include_once $base_url . 'header.php';
 
 <!-- Main Gallery Section -->
 <main class="container" style="padding-top: 20px;">
-    <h1 style="text-align: center; margin-bottom: 8px;">Galeri Keindahan Karimunjawa</h1>
+    <h1 style="text-align: center; margin-bottom: 8px;">Galeri Foto Penginapan Karimunjawa</h1>
     <p style="text-align: center; color: var(--medium-gray); max-width: 600px; margin: 0 auto 40px auto; font-size: 16px; line-height: 24px;">
-        Kumpulan dokumentasi keindahan alam bawah laut, pantai pasir putih, resort romantis, dan momen kebersamaan tak terlupakan di Kepulauan Karimunjawa.
+        Kumpulan dokumentasi foto kamar, fasilitas resort, homestay tradisional, villa kayu estetik, dan lanskap pemandangan indah di sekitar akomodasi Karimunjawa.
     </p>
 
     <!-- Gallery Grid -->
@@ -32,15 +32,15 @@ include_once $base_url . 'header.php';
         <?php if (isset($galeri_foto) && is_array($galeri_foto)): ?>
             <?php foreach ($galeri_foto as $foto): 
                 // Tentukan tag kategori foto berdasarkan kata kunci di alt
-                $tag = "Wisata";
-                if (stripos($foto['alt'], 'Terumbu') !== false || stripos($foto['alt'], 'Hiu') !== false || stripos($foto['alt'], 'Menjangan') !== false) {
-                    $tag = "Bawah Laut";
-                } elseif (stripos($foto['alt'], 'Resort') !== false || stripos($foto['alt'], 'Honeymoon') !== false) {
-                    $tag = "Akomodasi";
+                $tag = "Penginapan";
+                if (stripos($foto['alt'], 'Resort') !== false || stripos($foto['alt'], 'Hiu') !== false) {
+                    $tag = "Resort";
+                } elseif (stripos($foto['alt'], 'Villa') !== false || stripos($foto['alt'], 'Terumbu') !== false) {
+                    $tag = "Villa";
+                } elseif (stripos($foto['alt'], 'Homestay') !== false || stripos($foto['alt'], 'Outbound') !== false) {
+                    $tag = "Homestay";
                 } elseif (stripos($foto['alt'], 'Pantai') !== false) {
                     $tag = "Pantai";
-                } elseif (stripos($foto['alt'], 'Outbound') !== false || stripos($foto['alt'], 'Gathering') !== false) {
-                    $tag = "Aktivitas";
                 }
             ?>
                 <div class="gallery-card" onclick="bukaModalLightbox('<?php echo $base_url . $foto['file']; ?>', '<?php echo $foto['alt']; ?>')">

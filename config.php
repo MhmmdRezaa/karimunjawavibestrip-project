@@ -2,140 +2,424 @@
 // config.php
 $nomor_whatsapp = "62895361870926"; // Ganti dengan nomor WA operasional Anda
 
-$paket_wisata = [
+$daftar_penginapan = [
     [
-        "id" => "snorkeling-3h2m",
-        "nama" => "Paket Snorkeling 3H2M",
-        "deskripsi" => "Open trip seru menjelajahi terumbu karang indah dan berenang bersama hiu penjinak.",
-        "harga" => "Rp 950.000 / pax",
-        "gambar" => "assets/images/paket-snorkeling.jpg",
-        "badge" => "Hemat 20%",
-        "badge_class" => "",
-        "durasi" => "3 Hari 2 Malam",
-        "detail_deskripsi" => "Nikmati petualangan laut tak terlupakan di Karimunjawa. Paket snorkeling ini dirancang khusus untuk Anda pecinta dunia bawah laut. Kita akan menjelajahi terumbu karang eksotis di berbagai pulau, bermain dengan ikan warna-warni, serta mengunjungi penangkaran hiu yang menegangkan sekaligus seru.",
-        "fasilitas" => [
-            "Tiket Kapal Express Bahari (Jepara - Karimunjawa PP)",
-            "Transportasi lokal di Karimunjawa (Motor/Mobil)",
-            "Penginapan AC (1 Kamar 2 Orang)",
-            "Makan prasmanan 6 kali (termasuk BBQ bakar ikan di pulau)",
-            "Sewa kapal wisata untuk snorkeling & island hopping",
-            "Tiket masuk objek wisata dan retribusi pelabuhan",
-            "Alat snorkeling lengkap (Fin, Masker, Snorkel, Life Jacket)",
-            "Dokumentasi foto bawah air (GoPro) & udara (Drone opsional)",
-            "Tour Guide bersertifikat HPI (Himpunan Pramuwisata Indonesia)",
-            "P3K & Asuransi penyeberangan kapal"
-        ],
-        "tidak_termasuk" => [
-            "Transportasi dari kota asal ke Pelabuhan Kartini Jepara",
-            "Pengeluaran pribadi (laundry, jajan, mini bar)",
-            "Tips Guide & Driver (sukarela)"
-        ],
-        "itinerary" => [
-            [
-                "hari" => "Hari 1",
-                "judul" => "Kedatangan & Sunset Pantai Tanjung Gelam",
-                "kegiatan" => "Penjemputan di Pelabuhan Karimunjawa setelah kapal bersandar, check-in penginapan dan makan siang prasmanan. Perjalanan darat menuju Bukit Love untuk berfoto dengan lanskap pulau dari ketinggian, lalu menuju Pantai Tanjung Gelam untuk menikmati kelapa muda dan menyaksikan matahari terbenam yang romantis di bawah pohon kelapa miring yang ikonik. Kembali ke penginapan, makan malam prasmanan, dan acara bebas."
-            ],
-            [
-                "hari" => "Hari 2",
-                "judul" => "Petualangan Snorkeling & BBQ di Pulau",
-                "kegiatan" => "Makan pagi di penginapan, menuju dermaga wisata untuk naik kapal snorkeling. Spot pertama adalah snorkeling di Pulau Menjangan Kecil melihat terumbu karang indah dan nemo. Dilanjutkan makan siang BBQ ikan bakar segar di Pulau Cemara Kecil/Geleang yang berpasir putih bersih. Setelah makan siang, snorkeling di Karang Gosong / Gosong Cemara. Sore hari mengunjungi Penangkaran Hiu di Pulau Menjangan Besar untuk berenang bersama hiu jinak (opsional). Kembali ke darat, makan malam, dan belanja oleh-oleh."
-            ],
-            [
-                "hari" => "Hari 3",
-                "judul" => "Check-out & Kepulangan",
-                "kegiatan" => "Makan pagi di penginapan and check-out. Rombongan ditransfer ke Pelabuhan Karimunjawa untuk melakukan penyeberangan kapal Express Bahari kembali ke Pelabuhan Kartini Jepara. Tour selesai dengan kenangan indah."
-            ]
-        ]
-    ],
-    [
-        "id" => "private-honeymoon",
-        "nama" => "Private Honeymoon",
-        "deskripsi" => "Momen romantis privat di pulau terpencil dengan fasilitas premium khusus Anda dan pasangan.",
-        "harga" => "Rp 3.500.000 / psg",
-        "gambar" => "assets/images/paket-honeymoon.jpg",
-        "badge" => "Terpopuler",
-        "badge_class" => "orange",
-        "durasi" => "3 Hari 2 Malam (Privat)",
-        "detail_deskripsi" => "Ciptakan kenangan terindah bersama pasangan dalam paket bulan madu romantis privat kami. Layanan premium dari penjemputan hingga kepulangan, termasuk dekorasi kamar romantis, candle light dinner di tepi pantai berpasir putih, dan tour perahu privat untuk menjaga kenyamanan privasi Anda berdua.",
-        "fasilitas" => [
-            "Tiket Kapal Express Bahari Kelas VIP (Jepara - Karimunjawa PP)",
-            "Transportasi privat mobil AC selama di Karimunjawa",
-            "Resort / Hotel romantis tepi pantai pilihan dengan dekorasi honeymoon",
-            "Private trip kapal wisata khusus untuk snorkeling & island hopping",
-            "Makan romantis (1x Romantic Candlelight Dinner di pantai)",
-            "Makan prasmanan/ala carte 6 kali (termasuk BBQ privat di pulau)",
-            "Tiket masuk semua objek wisata & retribusi daerah",
-            "Alat snorkeling lengkap berkualitas untuk 2 orang",
-            "Dokumentasi foto & video profesional (GoPro & Mirrorless)",
-            "Dokumentasi udara (Drone) gratis untuk momen romantis Anda",
-            "Private Tour Guide HPI ramah dan profesional"
-        ],
-        "tidak_termasuk" => [
-            "Tiket perjalanan dari kota asal ke Jepara",
-            "Pengeluaran pribadi & belanja souvenir",
-            "Tips Guide & Driver (sukarela)"
-        ],
-        "itinerary" => [
-            [
-                "hari" => "Hari 1",
-                "judul" => "Welcome Drink, Check-in & Romantic Sunset",
-                "kegiatan" => "Sambutan welcome drink di dermaga Karimunjawa, dilanjutkan transfer privat ke resort pantai pilihan. Check-in dan istirahat menikmati keindahan resort yang dihias romantis. Sore hari, perjalanan privat ke Pantai Tanjung Gelam untuk foto berdua dengan latar belakang matahari terbenam. Kembali ke resort untuk istirahat."
-            ],
-            [
-                "hari" => "Hari 2",
-                "judul" => "Private Island Snorkeling & Candle Light Dinner",
-                "kegiatan" => "Makan pagi di resort, lalu naik private boat dari dermaga resort. Snorkeling intim di spot Nemo pulau terpencil yang sepi pengunjung, dilanjutkan makan siang BBQ privat di pantai pasir putih berdua dibantu kru guide kami. Sore hari, foto romantis di gosong pasir putih di tengah laut. Malam hari: Romantic Candle Light Dinner di tepi pantai dengan iringan deburan ombak dan cahaya lilin/lentera."
-            ],
-            [
-                "hari" => "Hari 3",
-                "judul" => "Foto Bukit Love & Kepulangan VIP",
-                "kegiatan" => "Sarapan pagi di resort dan check-out. Mengunjungi spot foto romantis Bukit Love / Bukit Joko Tuwo sebelum transfer privat menuju Pelabuhan Karimunjawa. Penyeberangan kapal Express VIP kembali ke Pelabuhan Kartini Jepara. Tour berakhir manis."
-            ]
-        ]
-    ],
-    [
-        "id" => "family-gathering",
-        "nama" => "Family Gathering Custom",
-        "deskripsi" => "Paket fleksibel yang dirancang khusus untuk kenyamanan liburan keluarga besar atau instansi Anda.",
-        "harga" => "Harga Menyesuaikan",
+        "id" => "homestay-fan",
+        "nama" => "Homestay Fan",
+        "deskripsi" => "Penginapan kipas angin (fan) yang bersih, ekonomis, dan nyaman untuk budget traveler.",
+        "harga" => "Rp. 1.200.000 / pax",
         "gambar" => "assets/images/paket-family.jpg",
-        "badge" => "",
+        "badge" => "Budget Friendly",
         "badge_class" => "",
-        "durasi" => "Customizable",
-        "detail_deskripsi" => "Menyatukan keluarga besar atau rekan kerja dalam petualangan seru dan mengakrabkan di Karimunjawa. Kami merancang aktivitas outbound/fun games ringan di pantai, island hopping dengan kapal besar yang nyaman, serta pesta bakar ikan segar untuk menciptakan atmosfer kebersamaan yang hangat.",
+        "lokasi" => "Pusat Kota, Karimunjawa",
+        "detail_deskripsi" => "Homestay Fan menawarkan akomodasi ekonomis yang sangat bersih dan nyaman di jantung kepulauan Karimunjawa. Pilihan ideal bagi para pelancong ransel (backpacker) yang menginginkan tempat istirahat ramah di kantong setelah seharian berkeliling pulau. Lokasinya strategis dekat dengan area kuliner.",
+        "foto_galeri" => [
+            "assets/images/paket-family.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-1.jpg",
+            "assets/images/galeri-2.jpg"
+        ],
         "fasilitas" => [
-            "Tiket Kapal Express Bahari / Kapal Cepat Ferry PP (Jepara - Karimunjawa)",
-            "Transportasi bus mini / mobil wisata AC di Karimunjawa (tidak digabung grup lain)",
-            "Pilihan Hotel / Resort berkapasitas besar sesuai anggaran kelompok",
-            "Konsumsi prasmanan lengkap (bisa request menu khusus anak-anak/pantangan)",
-            "Kapal wisata besar khusus untuk rombongan gathering Anda",
-            "Fun Games & Outbound Ringan di pantai (termasuk MC & properti games)",
-            "Dokumentasi dokumenter lengkap (Foto, Video, & Drone)",
-            "Banner / Spanduk Gathering desain khusus gratis",
-            "P3K Lengkap & Asuransi Penyeberangan",
-            "Koordinator tour & Guide bersertifikat HPI siap melayani 24 jam"
+            "Kamar dengan Kipas Angin (Fan)",
+            "Kamar Mandi Bersama yang Bersih",
+            "Koneksi Wi-Fi Gratis",
+            "Breakfast Tradisional Sederhana",
+            "Dispenser Air Minum Bersama",
+            "Teras Bersantai Depan Kamar"
         ],
-        "tidak_termasuk" => [
-            "Transportasi bus/mobil dari kota asal menuju Jepara",
-            "Pengeluaran pribadi & tip opsional"
+        "aturan" => [
+            "Check-in: Mulai pukul 13:00",
+            "Check-out: Sebelum pukul 11:30",
+            "Harap mematikan listrik/fan saat keluar kamar",
+            "Harap menjaga ketenangan di malam hari"
+        ]
+    ],
+    [
+        "id" => "homestay-ac",
+        "nama" => "Homestay AC",
+        "deskripsi" => "Penginapan berpendingin ruangan (AC) yang sejuk dengan lokasi strategis di pusat kota.",
+        "harga" => "Rp. 1.400.000 / pax",
+        "gambar" => "assets/images/paket-family.jpg",
+        "badge" => "Best Value",
+        "badge_class" => "orange",
+        "lokasi" => "Pusat Kota, Karimunjawa",
+        "detail_deskripsi" => "Nikmati kenyamanan beristirahat di kamar sejuk ber-AC setelah beraktivitas di bawah terik matahari pantai Karimunjawa. Homestay AC menyediakan akomodasi bersih dengan kamar mandi dalam, memberikan privasi penuh dengan harga yang tetap sangat bersahabat.",
+        "foto_galeri" => [
+            "assets/images/paket-family.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-1.jpg"
         ],
-        "itinerary" => [
-            [
-                "hari" => "Hari 1",
-                "judul" => "Penyambutan, Fun Gathering & Sunset Dinner",
-                "kegiatan" => "Penjemputan rombongan di Pelabuhan Karimunjawa dengan armada privat. Check-in penginapan, pembagian kamar, dan makan siang prasmanan. Sore hari menuju pantai pasir putih untuk acara Fun Games / Outbound ringan yang dirancang untuk membangun kebersamaan. Makan malam prasmanan bersama dengan hiburan live music akustik (opsional)."
-            ],
-            [
-                "hari" => "Hari 2",
-                "judul" => "Island Hopping, Snorkeling Masal & Pesta BBQ",
-                "kegiatan" => "Makan pagi di penginapan, lalu menuju dermaga untuk naik kapal wisata khusus rombongan. Snorkeling bersama di spot karang Menjangan Kecil / Pulau Tengah. Sanding & istirahat di Pulau Cemara/Pulau Cilik untuk menikmati makan siang BBQ ikan bakar segar ala prasmanan pantai. Foto bersama menggunakan spanduk gathering di hamparan pasir putih bersih. Kembali ke darat, bersih-bersih diri, lalu makan malam dan sesi ramah tamah rombongan."
-            ],
-            [
-                "hari" => "Hari 3",
-                "judul" => "Belanja Oleh-oleh & Check-out",
-                "kegiatan" => "Sarapan pagi dan persiapan check-out. Belanja suvenir khas Karimunjawa (kaos, kerajinan kayu dewandaru, kerupuk atom) sebelum transfer rombongan menuju pelabuhan Karimunjawa. Perjalanan laut kembali ke Jepara. Semoga perjalanan ini mempererat silaturahmi!"
-            ]
+        "fasilitas" => [
+            "Kamar Full AC",
+            "Kamar Mandi Dalam (Shower)",
+            "Koneksi Wi-Fi Gratis",
+            "Breakfast Khas Karimunjawa",
+            "Air Mineral Kemasan Gratis",
+            "Teras Santai Depan Kamar"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 13:00",
+            "Check-out: Sebelum pukul 11:30",
+            "Matikan AC saat meninggalkan penginapan",
+            "Dilarang merokok di dalam kamar tidur"
+        ]
+    ],
+    [
+        "id" => "puri-karimun",
+        "nama" => "Puri Karimun",
+        "deskripsi" => "Hotel Puri Karimun menawarkan kenyamanan menginap yang menyenangkan dengan akses dekat pelabuhan.",
+        "harga" => "Rp. 1.600.000 / pax",
+        "gambar" => "assets/images/paket-snorkeling.jpg",
+        "badge" => "Favorit",
+        "badge_class" => "",
+        "lokasi" => "Dekat Pelabuhan, Karimunjawa",
+        "detail_deskripsi" => "Puri Karimun adalah akomodasi legendaris yang nyaman dengan arsitektur modern minimalis. Terletak sangat dekat dengan pintu masuk utama (Pelabuhan Karimunjawa), hotel ini memudahkan mobilitas Anda saat check-in maupun check-out menuju kapal penyeberangan.",
+        "foto_galeri" => [
+            "assets/images/paket-snorkeling.jpg",
+            "assets/images/galeri-1.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-4.jpg"
+        ],
+        "fasilitas" => [
+            "Kamar AC Premium",
+            "Kamar Mandi Dalam (Shower & Air Panas)",
+            "Wi-Fi Kecepatan Tinggi",
+            "Televisi LCD di Setiap Kamar",
+            "Breakfast Prasmanan Enak",
+            "Jasa Penjemputan Pelabuhan Gratis"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Dilarang membawa barang berbau tajam (durian dll)",
+            "Kunci kamar wajib dititipkan di resepsionis saat keluar"
+        ]
+    ],
+    [
+        "id" => "blue-laguna",
+        "nama" => "Blue Laguna Inn",
+        "deskripsi" => "Penginapan bernuansa laguna tropis dengan area santai tepi pantai yang romantis.",
+        "harga" => "Rp. 1.850.000 / pax",
+        "gambar" => "assets/images/paket-honeymoon.jpg",
+        "badge" => "Lagoon View",
+        "badge_class" => "",
+        "lokasi" => "Tepi Pantai, Karimunjawa",
+        "detail_deskripsi" => "Blue Laguna Inn menghadirkan suasana penginapan eksotis yang memadukan keindahan alam pantai dengan arsitektur kayu tradisional. Terletak di tepi pantai pasir putih, Anda dapat menikmati suara deburan ombak dan hembusan angin laut langsung dari balkon kamar.",
+        "foto_galeri" => [
+            "assets/images/paket-honeymoon.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-1.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-3.jpg"
+        ],
+        "fasilitas" => [
+            "Balkon Privat Menghadap Pantai",
+            "Kamar AC & Tempat Tidur King Size",
+            "Kamar Mandi Dalam dengan Perlengkapan",
+            "Wi-Fi Gratis di Seluruh Resort",
+            "Breakfast & Teh Sore di Cafe Pantai",
+            "Sewa Kano & Alat Snorkeling (Opsional)"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Dilarang membuang sampah di bibir pantai",
+            "Harap membilas badan setelah berenang di laut sebelum masuk kamar"
+        ]
+    ],
+    [
+        "id" => "summer-inn",
+        "nama" => "Hotel Summer Inn",
+        "deskripsi" => "Hotel modern minimalis dengan fasilitas lengkap, bersih, dan sangat dekat ke pusat kota.",
+        "harga" => "Rp. 1.850.000 / pax",
+        "gambar" => "assets/images/paket-snorkeling.jpg",
+        "badge" => "Modern Stay",
+        "badge_class" => "",
+        "lokasi" => "Pusat Kota, Karimunjawa",
+        "detail_deskripsi" => "Hotel Summer Inn mengusung konsep urban-modern yang minimalis, menghadirkan kamar tidur dengan interior cerah dan pencahayaan yang sangat baik. Sangat bersih, nyaman, dan berjarak hanya 3 menit dari pusat kuliner malam Alun-Alun Karimunjawa.",
+        "foto_galeri" => [
+            "assets/images/paket-snorkeling.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-1.jpg"
+        ],
+        "fasilitas" => [
+            "Kamar AC Cozy & Bersih",
+            "Kamar Mandi Dalam (Rain Shower)",
+            "Wi-Fi di Seluruh Area Hotel",
+            "Smart TV & Netflix Ready",
+            "Breakfast Prasmanan Bervariasi",
+            "Kopi & Teh Gratis di Lobby 24 Jam"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Dilarang merokok di kamar (Smoking Area tersedia)",
+            "Menjaga kebersihan dan ketertiban bersama"
+        ]
+    ],
+    [
+        "id" => "dseason",
+        "nama" => "Hotel D'Season",
+        "deskripsi" => "Resort bintang tiga mewah dengan fasilitas kolam renang besar di tepi pantai.",
+        "harga" => "Rp. 1.875.000 / pax",
+        "gambar" => "assets/images/paket-honeymoon.jpg",
+        "badge" => "Bintang 3",
+        "badge_class" => "orange",
+        "lokasi" => "Pantai Barat, Karimunjawa",
+        "detail_deskripsi" => "Hotel D'Season Karimunjawa merupakan resort bintang 3 premium yang menawarkan kenyamanan berkelas. Dilengkapi kolam renang outdoor yang besar menghadap laut, pusat kebugaran, dan kamar luas bertaraf hotel internasional. Pilihan tepat untuk kenyamanan berlibur maksimal.",
+        "foto_galeri" => [
+            "assets/images/paket-honeymoon.jpg",
+            "assets/images/galeri-1.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-4.jpg"
+        ],
+        "fasilitas" => [
+            "Kamar Mewah Ber-AC & Balkon",
+            "Kolam Renang Besar (Swimming Pool)",
+            "Gym & Area Kebugaran",
+            "Wi-Fi Kecepatan Tinggi & TV Kabel",
+            "Breakfast Mewah untuk Keluarga",
+            "Layanan Antar-Jemput Pelabuhan Eksklusif"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Gunakan pakaian renang yang layak di area kolam",
+            "Dilarang membawa senjata tajam atau narkoba"
+        ]
+    ],
+    [
+        "id" => "almare",
+        "nama" => "Almare",
+        "deskripsi" => "Penginapan tepi laut eksklusif dengan dermaga kayu pribadi untuk menikmati matahari terbit.",
+        "harga" => "Rp. 2.050.000 / pax",
+        "gambar" => "assets/images/paket-snorkeling.jpg",
+        "badge" => "Sea Front",
+        "badge_class" => "",
+        "lokasi" => "Tepi Pantai, Karimunjawa",
+        "detail_deskripsi" => "Almare menyajikan akomodasi bernuansa bahari yang elegan. Terletak menjorok ke arah pantai, penginapan ini dilengkapi dengan dermaga kayu pribadi (sun deck) yang sangat indah untuk berfoto, bersantai, atau menikmati matahari terbit langsung dari lokasi penginapan.",
+        "foto_galeri" => [
+            "assets/images/paket-snorkeling.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-1.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-3.jpg"
+        ],
+        "fasilitas" => [
+            "Kamar Tepi Laut View Spektakuler",
+            "Dermaga Pribadi & Tempat Berjemur",
+            "AC & Kamar Mandi Dalam (Water Heater)",
+            "Wi-Fi Gratis di Semua Area",
+            "Breakfast & Welcome Drink Segar",
+            "Sewa Motor & Alat Kayak Gratis"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Berhati-hati saat berjalan di area dermaga kayu",
+            "Dilarang merusak terumbu karang di sekitar penginapan"
+        ]
+    ],
+    [
+        "id" => "omah-alchy",
+        "nama" => "Omah Alchy",
+        "deskripsi" => "Cottage kayu tradisional estetik di atas air laut, menyuguhkan nuansa liburan tropis yang eksotis.",
+        "harga" => "Rp. 2.150.000 / pax",
+        "gambar" => "assets/images/paket-honeymoon.jpg",
+        "badge" => "Unique Stay",
+        "badge_class" => "orange",
+        "lokasi" => "Tepi Pantai, Karimunjawa",
+        "detail_deskripsi" => "Omah Alchy menawarkan cottage kayu bergaya tradisional Jawa (Joglo) yang berdiri tepat di atas permukaan air laut dangkal Karimunjawa. Menghadirkan pengalaman menginap unik dan intim dengan pemandangan laut 180 derajat yang memanjakan mata Anda sepanjang hari.",
+        "foto_galeri" => [
+            "assets/images/paket-honeymoon.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-1.jpg",
+            "assets/images/galeri-2.jpg"
+        ],
+        "fasilitas" => [
+            "Water Cottage (Kamar di Atas Air)",
+            "AC & Kamar Mandi Semi-Outdoor",
+            "Balkon Privat dengan Hammock",
+            "Wi-Fi Kecepatan Tinggi",
+            "Breakfast Lezat Menu Lokal/Barat",
+            "Fasilitas Alat Snorkeling Gratis"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Dilarang membuang sampah apapun ke dalam air laut",
+            "Anak-anak harus selalu dalam pengawasan orang dewasa di teras air"
+        ]
+    ],
+    [
+        "id" => "hallo-resort",
+        "nama" => "Hallo Resort",
+        "deskripsi" => "Resort asri dengan taman hijau yang luas dan pemandangan laut dari atas ketinggian bukit.",
+        "harga" => "Rp. 2.150.000 / pax",
+        "gambar" => "assets/images/paket-family.jpg",
+        "badge" => "Hill Resort",
+        "badge_class" => "",
+        "lokasi" => "Perbukitan, Karimunjawa",
+        "detail_deskripsi" => "Hallo Resort memadukan kesejukan alam bukit Karimunjawa dengan keindahan pemandangan laut lepas. Dikelilingi taman kelapa dan vegetasi hijau yang asri, resort ini menawarkan penginapan bertipe cottage mandiri yang tenang untuk melepas kepenatan rutinitas kota.",
+        "foto_galeri" => [
+            "assets/images/paket-family.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-1.jpg"
+        ],
+        "fasilitas" => [
+            "Private Villa / Cottage AC",
+            "Taman Luas & Spot Foto Menarik",
+            "Kamar Mandi Dalam dengan Bathtub",
+            "Wi-Fi & TV Satelit/Kabel",
+            "Breakfast & Dinner di Resto Bukit",
+            "Transportasi Shuttle ke Pantai/Kota PP"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Dilarang menyalakan musik terlalu keras (menjaga ketenangan bukit)",
+            "Aturan ketat pelestarian alam sekitar resort"
+        ]
+    ],
+    [
+        "id" => "happinezz-hill",
+        "nama" => "The Happinezz Hill",
+        "deskripsi" => "Penginapan estetik bernuansa bohemian dengan view panorama perbukitan dan sunset laut yang indah.",
+        "harga" => "Rp. 2.050.000 / pax",
+        "gambar" => "assets/images/paket-snorkeling.jpg",
+        "badge" => "Best Sunset View",
+        "badge_class" => "",
+        "lokasi" => "Bukit Karimunjawa, Karimunjawa",
+        "detail_deskripsi" => "The Happinezz Hill didesain dengan konsep tropis bohemian yang sangat estetik dan instagramable. Terletak di perbukitan Karimunjawa, tempat ini menjadi lokasi terbaik untuk menyaksikan momen matahari terbenam (sunset) yang spektakuler langsung dari kolam renang atau area cafe santai.",
+        "foto_galeri" => [
+            "assets/images/paket-snorkeling.jpg",
+            "assets/images/galeri-1.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-4.jpg"
+        ],
+        "fasilitas" => [
+            "Kamar AC Desain Bohemian Estetik",
+            "Infinity Pool View Bukit & Laut",
+            "Rooftop Cafe & Sunset Area",
+            "Wi-Fi Gratis Seluruh Lokasi",
+            "Breakfast Enak Khas Happinezz",
+            "Sewa Motor Gratis selama Menginap"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Dilarang membawa makanan luar ke area rooftop cafe",
+            "Menjaga ketenangan dan kenyamanan pengunjung lain"
+        ]
+    ],
+    [
+        "id" => "legon-waru",
+        "nama" => "Legon Waru Cottage",
+        "deskripsi" => "Cottage eksklusif yang tenang dengan pantai tersembunyi berpagar pepohonan kelapa rimbun.",
+        "harga" => "Rp. 3.000.000 / pax",
+        "gambar" => "assets/images/paket-family.jpg",
+        "badge" => "Private Beach",
+        "badge_class" => "orange",
+        "lokasi" => "Legon Waru, Karimunjawa",
+        "detail_deskripsi" => "Legon Waru Cottage terletak di area eksklusif Legon Waru, menawarkan akomodasi peristirahatan privat yang jauh dari keramaian. Memiliki teluk pantai pasir putih sendiri yang teduh, dikelilingi ribuan pohon kelapa rimbun. Sangat pas untuk liburan keluarga eksklusif.",
+        "foto_galeri" => [
+            "assets/images/paket-family.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-1.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-3.jpg"
+        ],
+        "fasilitas" => [
+            "Private Beach Access (Akses Teluk Pantai)",
+            "Cottage AC Kayu Jati Mewah",
+            "Kamar Mandi Semi-Outdoor",
+            "Koneksi Wi-Fi & TV Satelit",
+            "Breakfast & Dinner Layanan Privat",
+            "Free Penjemputan Mobil AC PP"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Dilarang memancing tanpa izin di area teluk cottage",
+            "Kamar dibersihkan sekali sehari demi privasi tamu"
+        ]
+    ],
+    [
+        "id" => "royal-ocean",
+        "nama" => "Royal Ocean View",
+        "deskripsi" => "Akomodasi premium mewah dengan pemandangan laut luas, menawarkan 3 kelas kamar eksklusif.",
+        "harga" => "Mulai Rp. 2.700.000 / pax",
+        "gambar" => "assets/images/paket-honeymoon.jpg",
+        "badge" => "Executive Resort",
+        "badge_class" => "orange",
+        "lokasi" => "Pantai Utara, Karimunjawa",
+        "detail_deskripsi" => "Royal Ocean View merupakan kompleks akomodasi premium termewah yang menghadap langsung ke samudera biru luas Karimunjawa. Kami menawarkan pilihan kamar berkelas tinggi untuk liburan eksklusif Anda:\n\n- **Deluxe Sea View**: Rp. 2.700.000 / pax\n- **Superior Room**: Rp. 3.150.000 / pax\n- **Executive Sea View**: Rp. 3.950.000 / pax\n\nSetiap kamar dirancang dengan standar resort mewah internasional dan balkon yang luas.",
+        "foto_galeri" => [
+            "assets/images/paket-honeymoon.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-1.jpg",
+            "assets/images/galeri-2.jpg"
+        ],
+        "fasilitas" => [
+            "Pilihan Kamar Deluxe, Superior, & Executive",
+            "Balkon Kamar Menghadap Laut Lepas",
+            "AC, Bathtub, & Water Heater Mewah",
+            "Wi-Fi Kecepatan Tinggi & Smart TV",
+            "Breakfast Prasmanan Berkelas Bintang 5",
+            "Infinity Pool & Sky Lounge",
+            "Layanan Butler & Antar Jemput VIP PP"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Dilarang membawa hewan peliharaan",
+            "Tidak diperbolehkan merokok di dalam kamar tidur"
+        ]
+    ],
+    [
+        "id" => "java-paradise",
+        "nama" => "Java Paradise",
+        "deskripsi" => "Resort bergaya klasik tropis modern dengan 3 pilihan tipe kamar yang sangat nyaman.",
+        "harga" => "Mulai Rp. 2.050.000 / pax",
+        "gambar" => "assets/images/paket-snorkeling.jpg",
+        "badge" => "Paradise Resort",
+        "badge_class" => "",
+        "lokasi" => "Tepi Pantai, Karimunjawa",
+        "durasi"=> "3D2N",
+        "detail_deskripsi" => "Java Paradise Resort menawarkan liburan surga tropis berkelas dengan perpaduan arsitektur kayu Jawa klasik dan fasilitas modern. Terletak tepat di pinggir pantai berpasir putih, kami menyediakan 3 pilihan kelas kamar:\n\n- **Family (P)**: Rp. 2.050.000 / pax\n- **Superior Class**: Rp. 2.200.000 / pax\n- **Executive Class**: Rp. 2.450.000 / pax",
+        "foto_galeri" => [
+            "assets/images/paket-snorkeling.jpg",
+            "assets/images/galeri-4.jpg",
+            "assets/images/galeri-3.jpg",
+            "assets/images/galeri-2.jpg",
+            "assets/images/galeri-1.jpg"
+        ],
+        "fasilitas" => [
+            "Pilihan Kamar Family, Superior, & Executive",
+            "Akses Langsung ke Pantai Pasir Putih",
+            "Kamar AC & Kamar Mandi Shower Premium",
+            "Wi-Fi Gratis Seluruh Resort",
+            "Breakfast Lezat Khas Java Paradise",
+            "Restoran Outdoor Pinggir Pantai",
+            "Penjemputan Pelabuhan Gratis PP"
+        ],
+        "aturan" => [
+            "Check-in: Mulai pukul 14:00",
+            "Check-out: Sebelum pukul 12:00",
+            "Dilarang membuang sampah sembarangan di pantai resort",
+            "Menjaga kebersihan dan keamanan fasilitas resort"
         ]
     ]
 ];
@@ -192,22 +476,22 @@ if (file_exists($reviews_file)) {
             "nama" => "Andi Wijaya", 
             "asal" => "Semarang", 
             "bintang" => 5, 
-            "ulasan" => "Pelayanan ramah banget! Tour guidenya tahu spot snorkeling terbaik yang sepi pengunjung.",
-            "tanggal" => "2026-06-18"
+            "ulasan" => "Tempatnya sangat bersih dan nyaman sekali. Pelayanan dari host ramah banget, dekat sekali dengan alun-alun!",
+            "tanggal" => "2026-06-20"
         ],
         [
             "nama" => "Siti Rahma", 
             "asal" => "Jakarta", 
             "bintang" => 5, 
-            "ulasan" => "Honeymoon di sini berkesan banget. Fasilitas kapal privatnya bersih dan makan siangnya enak.",
-            "tanggal" => "2026-06-18"
+            "ulasan" => "Honeymoon di Lighthouse Resort luar biasa berkesan. Kolam renang privatnya menghadap laut langsung dan sunset-nya juara!",
+            "tanggal" => "2026-06-21"
         ],
         [
             "nama" => "Rian Utama", 
             "asal" => "Surabaya", 
             "bintang" => 5, 
-            "ulasan" => "Sangat puas dengan paket family gathering-nya. Semua jadwal tepat waktu dan fleksibel.",
-            "tanggal" => "2026-06-18"
+            "ulasan" => "Vila kayunya estetik parah, pemandangan laut dari atas balkon kamar benar-benar memanjakan mata. Fasilitas sewa motor gratisnya sangat membantu.",
+            "tanggal" => "2026-06-22"
         ]
     ];
     file_put_contents($reviews_file, json_encode($testimoni_pelanggan, JSON_PRETTY_PRINT));
