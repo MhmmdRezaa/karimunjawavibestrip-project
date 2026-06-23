@@ -1,0 +1,58 @@
+[
+    {
+        "nama": "King Acoy",
+        "asal": "Bandung",
+        "bintang": 4,
+        "ulasan": "liburan disini seru sekali!!!",
+        "tanggal": "2026-06-18"
+    },
+    {
+        "nama": "Bagus Septiawan",
+        "asal": "Jepara",
+        "bintang": 5,
+        "ulasan": "bagssus",
+        "tanggal": "2026-06-18"
+    },
+    {
+        "nama": "Bagus Septiawan",
+        "asal": "Jepara",
+        "bintang": 1,
+        "ulasan": "jelek",
+        "tanggal": "2026-06-18"
+    },
+    {
+        "nama": "Bagus Septiawan",
+        "asal": "Jepara",
+        "bintang": 5,
+        "ulasan": "Jelek, Saingan nich",
+        "tanggal": "2026-06-18"
+    },
+    {
+        "nama": "Budi",
+        "asal": "Yogyakarta",
+        "bintang": 4,
+        "ulasan": "Pelayanan sangat memuaskan sekali!",
+        "tanggal": "2026-06-18"
+    },
+    {
+        "nama": "Andi Wijaya",
+        "asal": "Semarang",
+        "bintang": 5,
+        "ulasan": "Pelayanan ramah banget! Tour guidenya tahu spot snorkeling terbaik yang sepi pengunjung.",
+        "tanggal": "2026-06-18"
+    },
+    {
+        "nama": "Siti Rahma",
+        "asal": "Jakarta",
+        "bintang": 5,
+        "ulasan": "Honeymoon di sini berkesan banget. Fasilitas kapal privatnya bersih dan makan siangnya enak.",
+        "tanggal": "2026-06-18"
+    },
+    {
+        "nama": "Rian Utama",
+        "asal": "Surabaya",
+        "bintang": 5,
+        "ulasan": "Sangat puas dengan paket family gathering-nya. Semua jadwal tepat waktu dan fleksibel.",
+        "tanggal": "2026-06-18"
+    }
+]
